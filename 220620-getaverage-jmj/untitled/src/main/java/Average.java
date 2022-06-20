@@ -9,9 +9,21 @@
 // 평균이란 => 모든 원소를 다 더한 뒤, 원소의 갯수로 나누어준 값
 //        => 평균값이 소수가 될 수 있으므로 변수 선언시 주의
 
-public class Average {
+import java.util.Scanner;
 
-  public int solution(int[] array) {
-    return 5;
+public class Average {
+  public static void main(String[] args) {
+    Average application = new Average();
+    application.run();
+  }
+
+  public void run() {
+    int[] array = new int[]{};
+    solution(array);
+  }
+
+  public double solution(int[] array) {
+    double answer = 2.5;
+    return answer;
   }
 }
