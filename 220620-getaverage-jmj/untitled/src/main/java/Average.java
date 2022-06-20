@@ -23,7 +23,13 @@ public class Average {
   }
 
   public double solution(int[] array) {
-    double answer = 2.5;
-    return answer;
+    double sum = 0;
+    double base = array.length;
+
+    for (int i = 0; i < array.length; i += 1) {
+      sum += array[i];
+    }
+
+    return sum / base;
   }
 }
