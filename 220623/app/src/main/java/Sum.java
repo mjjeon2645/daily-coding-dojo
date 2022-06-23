@@ -4,12 +4,13 @@ public class Sum {
   public int solution(int n) {
     int answer = 0;
 
-   String numberChangedToString = Integer.toString(n);
+    for (int i = 0; n > 0; i += 1) {
+      int addNumber = n % 10;
 
-   for (int i = 0; i < numberChangedToString.length(); i += 1) {
-     char extractedNumber = numberChangedToString.charAt(i);
-     answer += Character.getNumericValue(extractedNumber);
-   }
+      answer += addNumber;
+
+      n = (n - addNumber) / 10;
+    }
 
     System.out.println("Hello Java");
 
