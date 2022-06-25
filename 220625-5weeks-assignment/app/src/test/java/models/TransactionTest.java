@@ -18,4 +18,17 @@ class TransactionTest {
     assertEquals(transaction1, transaction2);
   }
 
+  @Test
+  void string() {
+    Transaction transaction = new Transaction("입금", 1000);
+
+    assertEquals("Transaction(입금: 1000)", transaction.toString());
+  }
+
+
+  @Test
+  void process() {
+    assertEquals(1000, (int) new Transaction("잔액", 1000).process(0));
+  }
+
 }
