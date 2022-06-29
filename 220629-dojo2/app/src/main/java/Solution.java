@@ -1,14 +1,13 @@
 public class Solution {
   public int solution(int n) {
     int answer = 0;
-    int base = 1;
+    int remainder = 0;
 
-    while (base <= n ) {
-      if (n % base == 0) {
-        answer += base;
+    for (int i = 1; i <= n; i += 1 ) {
+      switch (n % i) {
+        case 0 -> answer += i;
+        default ->answer += 0;
       }
-
-      base += 1;
     }
 
     return answer;
