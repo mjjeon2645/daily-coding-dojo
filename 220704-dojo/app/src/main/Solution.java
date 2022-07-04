@@ -3,11 +3,12 @@ public class Solution {
     boolean answer = true;
 
     int accumulator = 0;
-    String number = Integer.toString(x);
-    String[] numbers = number.split("");
 
-    for (int i = 0; i < numbers.length; i += 1) {
-      accumulator += Integer.valueOf(numbers[i]);
+    for (int i = 0; i < (int)(Math.log10(x) + 1); i += 1) {
+      int devidend = x;
+    int number = devidend / Math.pow(10, (int)(Math.log10(x) + 1) - (i + 1));
+      accumulator += number;
+      devidend -= Math.pot(10, (int)(Math.log10(x) + 1) - (i + 1));
     }
 
     if (x % accumulator != 0) {
