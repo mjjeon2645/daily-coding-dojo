@@ -13,39 +13,18 @@
 public class Solution {
   public int solution(int num) {
 
-    long number = num;
-    long dividend = 0;
-    int i = 0;
-    int answer = 0;
+    long number = (long) num;
 
-    if (number == 1) {
-      return 0;
+    for (int i = 0; i < 500; i += 1) {
+      if (number == 1) {
+        return i;
+      }
+
+      number
+          = (number % 2 == 0)
+          ? number / 2
+          : number * 3 + 1;
     }
-
-    while (i < 500) {
-      if (number % 2 == 0) {
-        dividend = number / 2;
-      }
-
-      if (number % 2 != 0) {
-        dividend = number * 3 + 1;
-      }
-
-      if (dividend == 1) {
-        answer = i + 1;
-        break;
-      }
-
-      if (i == 499) {
-        answer = -1;
-        break;
-      }
-
-      number = dividend;
-
-      i += 1;
-    }
-
-    return answer;
+    return -1;
   }
 }
