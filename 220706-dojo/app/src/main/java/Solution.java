@@ -9,23 +9,12 @@
 
 public class Solution {
   public long solution(long n) {
-    long answer = 4;
-    long i = 1;
 
-    while (i < n) {
-      if (n == i * i) {
-        answer = (i + 1) * (i + 1);
-        break;
-      }
+    long number = (long) Math.sqrt(n);
 
-      if (n < i * i) {
-        break;
-      }
-
-      answer = -1;
-      i += 1;
+    if ((long) Math.pow(number, 2) == n) {
+      return (long) Math.pow(number + 1, 2);
     }
-
-    return answer;
+    return -1;
   }
 }
