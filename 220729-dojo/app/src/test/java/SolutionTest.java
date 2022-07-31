@@ -13,4 +13,15 @@ class SolutionTest {
 
     assertArrayEquals(new int[]{2, 1, 1, 0}, solution.solution(id_list, report, k));
   }
+
+  @Test
+  void sample2() {
+    Solution solution = new Solution();
+
+    String[] id_list = new String[] {"con", "ryan"};
+    String[] report = new String[] {"ryan con", "ryan con", "ryan con", "ryan con"};
+    int k = 3;
+
+    assertArrayEquals(new int[]{0, 0}, solution.solution(id_list, report, k));
+  }
 }
