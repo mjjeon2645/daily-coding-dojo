@@ -25,4 +25,18 @@ class SolutionTest {
 
     assertEquals(2, solution.solution(new int[]{3, 1, 2, 3}));
   }
+
+  @Test
+  void sample2() {
+    Solution solution = new Solution();
+
+    assertEquals(3, solution.solution(new int[]{3, 3, 3, 2, 2, 4}));
+  }
+
+  @Test
+  void sample3() {
+    Solution solution = new Solution();
+
+    assertEquals(2, solution.solution(new int[]{3, 3, 3, 2, 2, 2}));
+  }
 }
