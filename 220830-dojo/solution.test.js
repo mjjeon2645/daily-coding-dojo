@@ -12,15 +12,15 @@ test('sortingCompletionARray', () => {
 
 test('solution', () => {
   expect(solution(['leo', 'kiki', 'eden'], ['eden', 'kiki']))
-    .toStrictEqual(['leo']);
+    .toStrictEqual('leo');
   expect(solution(
     ['marina', 'josipa', 'nikola', 'vinko', 'filipa'],
     ['josipa', 'filipa', 'marina', 'nikola'],
   ))
-    .toStrictEqual(['vinko']);
+    .toStrictEqual('vinko');
   expect(solution(
     ['mislav', 'stanko', 'mislav', 'ana'],
     ['stanko', 'ana', 'mislav'],
   ))
-    .toStrictEqual(['mislav']);
+    .toStrictEqual('mislav');
 });

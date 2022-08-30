@@ -33,9 +33,9 @@ export function solution(participant, completion) {
       continue;
     }
     if (newArray1[i] !== newArray2[i]) {
-      return [newArray1[i]];
+      return newArray1[i];
     }
   }
 
-  return [newArray2[newArray1.length]];
+  return newArray2[newArray1.length];
 }
