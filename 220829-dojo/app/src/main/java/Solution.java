@@ -17,11 +17,11 @@ public class Solution {
     List<String> participants = Arrays.stream(participant).toList();
 
     int count = 0;
-    for (int i = 0; i < completion.length; i += 1) {
-      for(int j = 0; j < participant.length; j += 1) {
-       if (completion[i].equals(participants.get(j))) {
-         participants.remove(j);
-       }
+    for (String s : completion) {
+      for (int j = 0; j < participant.length; j += 1) {
+        if (s.equals(participants.get(j))) {
+          participants.remove(j);
+        }
       }
     }
     return answer;
