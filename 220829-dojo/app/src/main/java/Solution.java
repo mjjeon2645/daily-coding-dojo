@@ -8,20 +8,22 @@
 // 그렇게 완주자 수가 실제 완주자 수와 동일하게 되는 순간 참여자에 남은 명단 1사람을 리턴하게 하는건 어떨까?
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Solution {
   public String solution(String[] participant, String[] completion) {
     String answer = "";
+    Arrays.sort(participant);
+    Arrays.sort(completion);
 
-    List<String> participants = Arrays.stream(participant).toList();
+    for (int i = 0; i < completion.length; i += 1) {
+      if (!participant[i].equals(completion[i])) {
+        answer = participant[i];
+        break;
+      }
 
-    int count = 0;
-    for (String s : completion) {
-      for (int j = 0; j < participant.length; j += 1) {
-        if (s.equals(participants.get(j))) {
-          participants.remove(j);
-        }
+      if (i == completion.length - 1) {
+        answer = participant[completion.length];
+        break;
       }
     }
     return answer;
