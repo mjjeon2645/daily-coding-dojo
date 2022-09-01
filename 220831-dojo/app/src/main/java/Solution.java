@@ -20,26 +20,36 @@
 // 우선 내가 설정한 상황에 대해서만큼은 그린을 띄웠음. 그다음 상황 설정을 또 해보자.. 주어진 예시를 활용할까..?
 // n = 5, lost [2, 4], reserve[1, 3, 5], return 5
 
+import java.util.Arrays;
+
 public class Solution {
    public int solution(int n, int[] lost, int[] reserve) {
-     int answer = 0;
+     int answer = n - lost.length;
 
-     int minimumCount = n - lost.length;
+     Arrays.sort(lost);
+     Arrays.sort(reserve);
 
      for (int i = 0; i < lost.length; i += 1) {
        for (int j = 0; j < reserve.length; j += 1) {
-         if (lost[i] - 1 == reserve[j]) {
-           minimumCount += 1;
-           continue;
-         }
-
-         if (lost[i] + 1 == reserve[j]) {
-           minimumCount += 1;
+         if (lost[i] == reserve[j]) {
+           answer += 1;
+           lost[i] = -1;
+           reserve[j] = -1;
+           break;
          }
        }
      }
 
-     answer = minimumCount;
+     for (int i = 0; i < lost.length; i += 1) {
+       for (int j = 0; j < reserve.length; j += 1) {
+         if (lost[i] - 1 == reserve[j] ||
+         lost[i] + 1 == reserve[j]) {
+           answer += 1;
+           reserve[j] = -1;
+           break;
+         }
+       }
+     }
 
      return answer;
    }

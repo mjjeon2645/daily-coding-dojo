@@ -14,6 +14,7 @@ class SolutionTest {
 
     assertEquals(3, solution.solution(3, lost, reserve));
   }
+
   @Test
   void simpleTest2() {
 //    전체 학생수 5명. 잃어버린애 2, 4번, 여벌 가져온애 1, 3, 5번. 결과값 5
