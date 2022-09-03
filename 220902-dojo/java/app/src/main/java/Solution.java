@@ -7,26 +7,58 @@
 
 public class Solution {
   public int solution(int[][] board, int[] moves) {
+
     int answer = 0;
-    return answer;
-  }
 
-  public int move(int[][] board, int[] moves) {
-    int index = 0;
-    int movesIndex = 0;
+    int[] basket = new int[999];
+    int basketIndex = 1;
 
-    for (int i = 0; i < board.length; i += 1) {
-      if (board[i][0] == 0) {
-        continue;
-      }
+    for (int i = 0; i < moves.length; i += 1) {
+      int column = moves[i] - 1;
+      System.out.println("집게를 움직입니다~: " + column);
 
-      if (board[i][0] != 0) {
-        moves[movesIndex] = board[i][0];
-        break;
+      for (int j = 0; j < board.length; j += 1) {
+        if (board[j][column] == 0) {
+          System.out.println("탐색합니다~: " + board[j][column]);
+          continue;
+        }
+
+        if (board[j][column] != 0) {
+          System.out.println("0이 아니다!!: " + board[j][column]);
+
+          basket[basketIndex] = board[j][column];
+          System.out.println("인형을 배스킷에 넣습니다~: " + basket[basketIndex]);
+
+          basketIndex += 1;
+          System.out.println("바뀐 basketIndex(즉 직전건 -1): " + basketIndex);
+
+          board[j][column] = 0;
+          System.out.println("인형 빠진 자리는 0으로 만듭니다~: " + board[j][column]);
+
+          // 배스킷에 인형 2개가 같은게 만났는지 검증
+          if (basket[basketIndex - 1] == basket[basketIndex - 2]) {
+            System.out.println("위에 인형이랑: " + basket[basketIndex - 1]);
+            System.out.println("아래인형이 같나요?: " + basket[basketIndex - 2]);
+
+            basket[basketIndex - 1] = 0;
+            System.out.println("basket[basketIndex - 1]: " + basket[basketIndex - 1]);
+
+            basket[basketIndex - 2] = 0;
+            System.out.println("basket[basketIndex - 2]: " + basket[basketIndex - 2]);
+
+            basketIndex -= 2;
+            System.out.println("basketIndex: " + basketIndex);
+
+            answer += 2;
+            System.out.println("answer: " + answer);
+
+            break;
+          }
+          break;
+        }
       }
     }
-
-
-    return 0;
+    System.out.println("최종 answer: " + answer);
+    return answer;
   }
 }
