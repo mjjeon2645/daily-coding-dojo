@@ -7,7 +7,6 @@
 
 
 import java.util.*;
-import java.util.stream.*;
 
 public class Solution {
 
@@ -15,15 +14,22 @@ public class Solution {
     int[] answer = {};
 
     // 1. report에서 중복되는 것들 지워주기 => 해쉬셋을 이용해서만 중복을 지워줄 수 있을까..? 너무 어렵다.
-    // 차라리 리스트화 시키면서 예외를 처리해주는건 어때?
+    // 차라리 리스트화 시키면서 예외를 처리해주는건 어때? 아래처럼 구현함
 
     List<String> realReports = removeDuplicateReports(report);
+    for (int i = 0; i < realReports.size(); i += 1) {
+    }
+    // 2. 중복을 지웠으니 뭘 할까? 신고 당한 사람이 몇번 신고당했는지 카운트해서 새로운 뭔가를 만들어볼까?
+    // => 예를들면 순서를 가진 해시맵 같은거 (key는 id_list의 순서를 따르고, 밸류는 신고당한 횟수)
+    // 순서: 해시맵 선언, key:value put하기(value값 구하는게 우선이겠구나.)
 
-    // 2. 중복을 지웠으니 뭘 할까? 신고 당한 사람이 몇번 신고당했는지 카운트 해볼까?
-    // 해쉬셋에 들어간 string을 하나씩 꺼내와서 두번째 string의 갯수를 세어야 함
-    // 해쉬셋에 들어간 스트링을 빼오고 -> split으로 쪼갠 배열에서 -> 인덱스 1값만 모아 또다른 배열을 만들기
-    // 그 배열에서 각 원소별로 몇 개가 카운트되었는지 유저id 순서대로 배열을 만들자
 
+    LinkedHashMap<String, Long> maps = new LinkedHashMap<>();
+    for (String id : id_list) {
+      maps.put(id, 0L);
+    }
+
+    LinkedHashMap<String, Long> reportedMaps = counter(realReports, maps);
 
     return answer;
   }
@@ -33,8 +39,18 @@ public class Solution {
 
     Collections.addAll(filter, report);
 
-    List<String> realReports = filter.stream().toList();
+    return filter.stream().toList();
+  }
 
-    return realReports;
+  public LinkedHashMap<String, Long> counter(
+      List<String> realReports, LinkedHashMap<String, Long> maps) {
+
+    for (int i = 0; i < realReports.size(); i += 1) {
+      String[] words = realReports.get(i).split(" ");
+      Long originalValue = maps.get(words[1]);
+      maps.put(words[1], originalValue + 1);
+    }
+
+    return maps;
   }
 }
