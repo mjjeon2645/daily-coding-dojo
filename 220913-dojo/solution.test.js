@@ -1,4 +1,6 @@
-import { removeDuplicateItem, convertToReportedArray, countReportedNumber } from './solution';
+import {
+  removeDuplicateItem, convertToReportedArray, makeReportingArray, countReportedNumber,
+} from './solution';
 
 test('Remove Duplicate Items in Report Array', () => {
   expect(removeDuplicateItem([])).toStrictEqual([]);
@@ -30,4 +32,13 @@ test('countReportedNumber', () => {
 //   expect(countReportedNumber(['con', 'ryan'], [['ryan', 'con']]))
 //     .toStrictEqual([['con', 1], ['ryan', 0]]);
 
+});
+
+test('makeReportingArray', () => {
+  expect(makeReportingArray(['1', '2', '3'], ['1', '2', '3']))
+    .toStrictEqual([
+      { user: '1', reporting: [] },
+      { user: '2', reporting: [] },
+      { user: '3', reporting: [] },
+    ]);
 });
