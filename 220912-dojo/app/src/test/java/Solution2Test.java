@@ -48,13 +48,17 @@ class Solution2Test {
     Map<String, List<String>> reportMap = new LinkedHashMap<>();
     reportMap.put("con", new ArrayList<>());
     reportMap.put("ryan", new ArrayList<>());
+    reportMap.put("muzi", new ArrayList<>());
 
     List<String> realReports = new ArrayList<>();
     realReports.add("con ryan");
+    realReports.add("muzi ryan");
+    realReports.add("muzi con");
 
     solution2.makeReportingHistory(reportMap, realReports);
 
-    assertEquals(reportMap.get("con"), "ryan");
+    assertEquals(reportMap.get("con"), List.of("ryan"));
+    assertEquals(reportMap.get("muzi"), List.of("ryan", "con"));
     assertEquals(reportMap.get("ryan").size(), 0);
   }
 }

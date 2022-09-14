@@ -9,8 +9,12 @@ class Solution2 {
     // 2. 입력한 아이디의 순서가 지켜지는 맵이 만들어져야 함.
     Map<String, List<String>> reportMap = makeReportMap(id_list);
 
-    // 3. 찐 리포트를 split으로 쪼갠 후, reportMap의 키에 해당하는 유저가 신고한 내역이 있으면 인덱스 1값을 밸류에 add시킴
+    // 3. 찐 리포트를 split으로 쪼갠 후, reportMap의 키에 해당하는 유저가 신고한 내역이 있으면
+    // 인덱스 1값을 밸류에 add시킴
     makeReportingHistory(reportMap, realReports);
+
+    // 4. 여기서 뭘 할건지를 결정!!!! 위에까지 잘 만들어놓긴 했으니...
+    count(reportMap, k);
 
     return answer;
   }
@@ -34,6 +38,15 @@ class Solution2 {
   }
 
   public void makeReportingHistory(Map<String, List<String>> reportMap, List<String> realReports) {
+    for (String report : realReports) {
+      String[] words = report.split(" ");
+      String user = words[0];
+      String reportedUser = words[1];
 
+      reportMap.get(user).add(reportedUser);
+    }
+  }
+
+  public void count(Map<String, List<String>> reportMap, int k) {
   }
 }
