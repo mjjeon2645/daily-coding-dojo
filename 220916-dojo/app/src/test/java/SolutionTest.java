@@ -50,7 +50,7 @@ class SolutionTest {
   // 가운데 있는 숫자 2, 5, 8, 11은 손가락이 있는 숫자랑 1, 또는 3 차이가 날때는 거리가 1
   // 또는 2, 4 차이가 날때는 2
   // 또는 5 차이 날때는 3
-  // 6 이상부터는 그냥 왼손/오른손잡이에 의해서만. 판단하면 되지 ㅇ낳을까?
+  // 6 이상부터는 그냥 왼손/오른손잡이에 의해서만. 판단하면 되지 을까?
 
   @Test
   void validator() {
@@ -110,7 +110,5 @@ class SolutionTest {
         leftHandsPosition = numbers[i];
         lists.add("left");
       }
-
-
   }
 }
