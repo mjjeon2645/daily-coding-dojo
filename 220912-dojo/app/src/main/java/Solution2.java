@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 class Solution2 {
   public int[] solution(String[] id_list, String[] report, int k) {
@@ -14,10 +15,35 @@ class Solution2 {
     makeReportingHistory(reportMap, realReports);
 
     // 4. 여기서 뭘 할건지를 결정!!!! 위에까지 잘 만들어놓긴 했으니...
-    count(reportMap, k);
+    // 여기부터 우선 동료 코드 참고하였음. 따로 풀어보기.
+    List<String> lists = count(reportMap, k);
 
-    return answer;
+    // 5. 이메일 발송 카운트
+
+    return countSentEmails(id_list, lists, reportMap);
   }
+
+  public int[] countSentEmails(String[] id_list, List<String> lists, Map<String, List<String>> reportMap) {
+    Map<String, Integer> countEmailsMap = new LinkedHashMap<>();
+
+    for (String id : id_list) {
+      countEmailsMap.put(id, 0);
+    }
+
+    for (String list : lists) {
+      List<String> reporters = reportMap.get(list);
+
+      for (String reporter : reporters) {
+        countEmailsMap.replace(reporter, countEmailsMap.get(reporter) + 1);
+      }
+    }
+
+    return countEmailsMap.values().stream()
+        .collect(Collectors.toList())
+        .stream().mapToInt(i -> i)
+        .toArray();
+  }
+
 
   public List<String> removeDuplicateReports(String[] report) {
     HashSet<String> filter = new HashSet<>();
@@ -47,6 +73,17 @@ class Solution2 {
     }
   }
 
-  public void count(Map<String, List<String>> reportMap, int k) {
+  public List<String> count(Map<String, List<String>> reportMap, int k) {
+    List<String> lists = new ArrayList<>();
+
+    for (String reportedUser : reportMap.keySet()) {
+      int reportedCount = reportMap.get(reportedUser).size();
+
+      if (reportedCount >= k) {
+        lists.add(reportedUser);
+      }
+    }
+
+    return lists;
   }
 }
