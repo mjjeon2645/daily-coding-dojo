@@ -11,4 +11,3 @@ SELECT ANIMAL_ID, NAME FROM ANIMAL_INS ORDER BY ANIMAL_ID
 3. 조회에 대한 조건은 ANIMAL_ID 순. 따라서 테이블의 데이터들은 ANIMAL_ID가 
    오름차순으로 정렬된 상태여야 함
    - ORDER BY ANIMAL_ID (기본값이 오름차순. 내림차순일때는 DESC 추가 필요)
-   
