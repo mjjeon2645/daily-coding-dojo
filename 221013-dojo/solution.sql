@@ -1,0 +1,9 @@
+제출답안 1
+SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name'), SEX_UPON_INTAKE FROM ANIMAL_INS ORDER BY ANIMAL_ID
+
+제출답안 2
+SELECT ANIMAL_TYPE, COALESCE(NAME, 'No name'), SEX_UPON_INTAKE FROM ANIMAL_INS ORDER BY ANIMAL_ID
+
+정리
+- 선택한 컬럼의 값이 NULL일 경우 대체값을 줄 수 있는 함수에 대해 알아봄
+- MySQL에서 사용할 수 있는 두 가지 함수 IFNULL(컬럼명, 대체값), COALESCE(컬럼명, 대체값)
