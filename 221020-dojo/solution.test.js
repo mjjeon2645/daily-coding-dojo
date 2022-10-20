@@ -1,7 +1,7 @@
 import solution, { toSmall, toArray, makeResult } from './solution';
 
 test('solution', () => {
-//   expect(solution('for the last week')).toBe('For The Last Week');
+  expect(solution('for the last week')).toBe('For The Last Week');
 });
 
 test('toSmall', () => {
