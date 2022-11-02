@@ -21,24 +21,18 @@ class Solution {
       }
 
       if (!stack.empty()) {
-        // 스택이 비어있지 않으면서 스택의 가장 마지막 요소가 현재 요소와 같지 않으면 들어가기
-        if (stack.peek() != selectedCharacter) {
-          stack.push(selectedCharacter);
+        // 스택이 비어있지 않으면서 스택의 가장 마지막 요소가 현재 요소와 같으면 맨 위에거 빼기
+        if (stack.peek() == selectedCharacter) {
+          stack.pop();
           continue;
         }
 
-          if (i + 1 == s.length()) {
-            if (stack.peek() == selectedCharacter) {
-              stack.pop();
-              break;
-            }
-          }
-
-          System.out.println(stack.peek());
-
-          answer = stack.empty() ? 1 : 0;
+        // 스택이 비어있지 않으면서 스택의 가장 마지막 요소가 현재 요소와 다르면 집어넣기
+        if (stack.peek() != selectedCharacter) {
+          stack.push(selectedCharacter);
         }
       }
-      return answer;
     }
+    return stack.empty() ? 1 : 0;
   }
+}
