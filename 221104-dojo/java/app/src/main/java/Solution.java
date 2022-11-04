@@ -4,8 +4,9 @@ class Solution {
   public int solution(String str1, String str2) {
     int answer = 0;
 
-    int countOfSumOfSets = 0;
-    int countOfintersection = 0;
+    double countOfIntersection = 0;
+    double countOfSumOfSets = 0;
+
 
     String toLower1 =str1.toLowerCase();
     String toLower2 =str2.toLowerCase();
@@ -16,7 +17,6 @@ class Solution {
     }
 
     // 문자열 2개씩 쪼개가면서 list에 넣기
-
     List<String> listsFromString1 = sliceWord(toLower1);
     List<String> listsFromString2 = sliceWord(toLower2);
 
@@ -25,9 +25,21 @@ class Solution {
       return 65536;
     }
 
-    // 원소 비교. 합집합
+    // 원소 비교. 교집합
+    countOfIntersection = intersection(listsFromString1, listsFromString2);
 
-   return answer;
+    System.out.println(countOfIntersection);
+
+    // 원소 비교. 합집합
+    countOfSumOfSets = sum(listsFromString1, listsFromString2, countOfIntersection);
+
+    System.out.println(countOfSumOfSets);
+
+   double result = countOfIntersection / countOfSumOfSets * 65536;
+
+   answer = (int) Math.floor(result);
+
+  return answer;
   }
 
   public List<String> sliceWord(String str) {
@@ -41,5 +53,23 @@ class Solution {
       }
     }
     return listsFromString;
+  }
+
+  public double intersection(List<String> listsFromString1, List<String> listsFromString2) {
+    int countOfIntersection = 0;
+
+    for (int i = 0; i < listsFromString1.size(); i += 1) {
+      for (int j = 0; j < listsFromString2.size(); j += 1) {
+        if (listsFromString1.get(i).equals(listsFromString2.get(j))) {
+          countOfIntersection += 1;
+          break;
+        }
+      }
+    }
+    return countOfIntersection;
+  }
+
+  public double sum(List<String> listsFromString1, List<String> listsFromString2, double countOfIntersection) {
+    return listsFromString1.size() + listsFromString2.size() - countOfIntersection;
   }
 }
