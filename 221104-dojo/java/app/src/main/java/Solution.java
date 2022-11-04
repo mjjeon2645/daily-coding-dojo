@@ -4,9 +4,8 @@ class Solution {
   public int solution(String str1, String str2) {
     int answer = 0;
 
-    double countOfIntersection = 0;
-    double countOfSumOfSets = 0;
-
+    List<String> intersections = new ArrayList<>();
+    List<String> sumOfSets = new ArrayList<>();
 
     String toLower1 =str1.toLowerCase();
     String toLower2 =str2.toLowerCase();
@@ -25,19 +24,19 @@ class Solution {
       return 65536;
     }
 
-    // 원소 비교. 교집합
-    countOfIntersection = intersection(listsFromString1, listsFromString2);
+    for (String s : listsFromString1) {
+      if (listsFromString2.remove(s)) {
+        intersections.add(s);
+      }
+      sumOfSets.add(s);
+    }
 
-    System.out.println(countOfIntersection);
+    sumOfSets.addAll(listsFromString2);
 
-    // 원소 비교. 합집합
-    countOfSumOfSets = sum(listsFromString1, listsFromString2, countOfIntersection);
+    double result = (double) intersections.size() / (double) sumOfSets.size();
+    result *= 65536;
 
-    System.out.println(countOfSumOfSets);
-
-   double result = countOfIntersection / countOfSumOfSets * 65536;
-
-   answer = (int) Math.floor(result);
+    answer = (int) result;
 
   return answer;
   }

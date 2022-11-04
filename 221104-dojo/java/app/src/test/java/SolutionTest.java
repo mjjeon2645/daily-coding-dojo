@@ -10,8 +10,8 @@ class SolutionTest {
     Solution solution = new Solution();
 
     assertEquals(16384, solution.solution("FRANCE", "french"));
-//    assertEquals(65536, solution.solution("E=M*C^2", "e=m*c^2"));
-//    assertEquals(65536, solution.solution("=*^", "=*^"));
+    assertEquals(65536, solution.solution("E=M*C^2", "e=m*c^2"));
+    assertEquals(65536, solution.solution("=*^", "=*^"));
   }
 
   @Test
@@ -32,8 +32,6 @@ class SolutionTest {
     assertEquals(2, solution.intersection(
         List.of("fr", "ra", "an", "nc", "ce"),
         List.of("fr", "re", "en", "nc", "ch")));
-
-
   }
 
   @Test
