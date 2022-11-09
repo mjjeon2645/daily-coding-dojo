@@ -3,24 +3,22 @@ import java.util.*;
 class Solution {
     public int solution(int[] people, int limit) {
         int answer = 0;
+        int heavyIndex = people.length - 1;
+        int lightIndex = 0;
 
         int[] sortedArray = sort(people);
 
-        int count = 0;
-        int accumulator = 0;
+        while(heavyIndex >= lightIndex) {
+            answer += 1;
 
-        int index = sortedArray.length - 1;
-        int i = 0;
-
-        while (true) {
-            accumulator += sortedArray[index];
-
-            if (accumulator >= limit) {
-                i = 0;
-                index = index - i + 1;
+            if (sortedArray[heavyIndex] + sortedArray[lightIndex] <= limit) {
+                lightIndex += 1;
             }
+
+            heavyIndex -= 1;
         }
 
+        return answer;
     }
 
     public int[] sort(int[] people) {
