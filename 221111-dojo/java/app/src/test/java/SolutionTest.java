@@ -5,7 +5,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
-//    @Test
+    @Test
     void sample() {
         Solution solution = new Solution();
 
@@ -17,5 +17,15 @@ class SolutionTest {
 
         assertEquals(new int[]{1, 2, 27, 29, 28, 31, 30},
             solution.solution("ABABABABABABABAB"));
+    }
+
+    @Test
+    void initDictionary() {
+        Solution solution = new Solution();
+
+        HashMap<String, Integer> dictionary = new HashMap<>();
+        solution.initDictionary(dictionary);
+
+        assertEquals(2, dictionary.get("B"));
     }
 }
