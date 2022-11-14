@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public int solution(int[] arr) {
         int answer = 0;
@@ -8,24 +6,33 @@ class Solution {
             return arr[0];
         }
 
-        Arrays.stream(arr).sorted();
-
-        // 약수를 구해보자
-        int[] array = process(arr);
-
+       answer = process(arr);
 
         return answer;
     }
 
-    public int[] process(int[] arr) {
-        int maxNumber = arr[arr.length - 1];
+    public int process(int[] arr) {
+        int standardNumber = arr[0];
 
-        int i = 1;
-
-        while (i < arr.length) {
-
+        for (int number : arr) {
+            standardNumber = findLcm(standardNumber, number);
         }
 
-        return new int[0];
+        return standardNumber;
+    }
+
+    public int findLcm(int a, int b) {
+        int gcd = findGcd(a, b);
+        return a * b / gcd;
+    }
+
+    public int findGcd(int a, int b) {
+        while(b > 0) {
+            int remain = a % b;
+            a = b;
+            b = remain;
+        }
+
+        return a;
     }
 }
