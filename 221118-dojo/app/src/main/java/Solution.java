@@ -2,61 +2,34 @@ import java.util.*;
 
 class Solution {
     public int solution(int cacheSize, String[] cities) {
-        int answer = 0;
         int hit = 1;
         int miss = 5;
 
-        Queue<String> words = new LinkedList<>();
+       if (cacheSize == 0) {
+           return cities.length * miss;
+       }
 
-        Arrays.stream(cities).map(String::toLowerCase);
+       int answer = 0;
 
-        if (cacheSize == 0) {
-            return cities.length * miss;
-        }
+       LinkedList<String> cache = new LinkedList<>();
 
-        int i = 0;
+       for (int i = 0; i < cities.length; i += 1) {
+           String convertedWord = cities[i].toLowerCase();
 
-        while (i < cities.length) {
-            System.out.println("***");
-            System.out.println(i);
-            System.out.println(answer);
-            System.out.println(words.size());
-            System.out.println("***");
+           if (cache.remove(convertedWord)) {
+               answer += hit;
+               cache.add(convertedWord);
+               continue;
+           }
 
-            if (i == 0) {
-                words.add(cities[i]);
-                answer += miss;
-                i += 1;
-                continue;
-            }
-
-            if (words.size() == cacheSize) {
-                if (words.contains(cities[i])) {
-                    answer += hit;
-                    i += 1;
-                    continue;
-                }
-
-                words.poll();
-                words.add(cities[i]);
-                answer += miss;
-                i += 1;
-                continue;
-            }
-
-            if (words.size() < cacheSize) {
-                if (words.contains(cities[i])) {
-                    answer += hit;
-                    i += 1;
-                    continue;
-                }
-
-                words.add(cities[i]);
-                answer += miss;
-                i += 1;
-            }
-        }
-
-        return answer;
+           if (!cache.remove(convertedWord)) {
+               answer += miss;
+               if (cache.size() >= cacheSize) {
+                   cache.remove(0);
+               }
+               cache.add(convertedWord);
+           }
+       }
+       return answer;
     }
 }
