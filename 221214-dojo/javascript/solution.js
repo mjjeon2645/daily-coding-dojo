@@ -1,11 +1,5 @@
-export function makeArray(number) {
-  return number.toString().split('');
-}
-
 export default function solution(x) {
-  const createdArray = makeArray(x);
-
-  const total = createdArray
+  const total = x.toString().split('')
     .map((a) => Number(a))
     .reduce((accumulator, current) => accumulator + current, 0);
 
