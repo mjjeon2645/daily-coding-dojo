@@ -25,7 +25,6 @@ class Solution {
         }
 
         // 진짜 잃어버린 아이와 진짜 빌려줄수 있는 아이가 각각 losts, reserves에 남아있음
-
         if (losts.size() == 0) {
             return n;
         }
