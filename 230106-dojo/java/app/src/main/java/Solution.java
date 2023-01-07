@@ -1,12 +1,5 @@
-import java.util.Set;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.LinkedHashMap;
-import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.stream.*;
-
 
 class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
