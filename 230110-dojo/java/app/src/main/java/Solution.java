@@ -11,7 +11,7 @@ class Solution {
 
             accumulator += count % 2 == 0 ? i : i * (- 1);
         }
-
+        
         return accumulator;
     }
 }
